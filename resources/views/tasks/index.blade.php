@@ -15,11 +15,8 @@
       <ul id="todos" class="list-group">
 
       @forelse($tasks as $task)
-        <li class="list-group-item list-group-item-action mb-3 pointer">
-          <div class="input-group-prepend d-flex align-items-center">
-            <div class="input-group-text bg-transparent border-0">
-              <input class="done" onclick="doneCheck()" name="done" type="checkbox" aria-label="Checkbox for following text input">
-            </div>
+        <li class="list-group-item list-group-item-action mb-3 rounded pointer">
+          <div class="d-flex align-items-center">
             <div class="px-3 w-100">
               <div class="d-flex align-items-center">
                 <span class="badge badge-primary mx-1">プライベート</span>
@@ -31,10 +28,17 @@
             </div>
             <div class="d-flex align-items-center">
               @if($task->deadline)
-              <span class="h6 mb-0 mr-5">{{ $task->deadline }}</span>
+              <span class="h6 mb-0 badge mr-5">{{ $task->deadline }}</span>
+              @else
+              <span class="h6 mb-0 badge mr-5">明日</span>
               @endif
+              <a href="#" class="done mr-5 btn btn-secondary" data-id="{{ $task->id }}">done</a>
+              <form method="post" action="{{ url('/tasks', $task->id) }}" id="task_done_{{ $task->id }}">
+                {{ csrf_field() }}
+                {{ method_field('delete') }}
+              </form>
               <a href="#"><i class="del fas fa-times" data-id="{{ $task->id }}"></i></a>
-              <form method="post" action="{{ url('/tasks', $task->id) }}" id="task_{{ $task->id }}">
+              <form method="post" action="{{ url('/tasks', $task->id) }}" id="task_del_{{ $task->id }}">
                 {{ csrf_field() }}
                 {{ method_field('delete') }}
               </form>

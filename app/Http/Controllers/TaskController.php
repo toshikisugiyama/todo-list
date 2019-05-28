@@ -22,10 +22,4 @@ class TaskController extends Controller
       $task->delete();
       return redirect('/');
     }
-    public function check(Task $task){
-      $task = new Task();
-      $task->done_flag = 1;
-      dd($task);
-      return redirect('/');
-    }
 }
