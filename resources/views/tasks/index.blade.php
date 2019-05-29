@@ -32,11 +32,7 @@
               @else
               <span class="h6 mb-0 badge mr-5">明日</span>
               @endif
-              <a href="#" class="done mr-5 btn btn-secondary" data-id="{{ $task->id }}">done</a>
-              <form method="post" action="{{ url('/tasks', $task->id) }}" id="task_done_{{ $task->id }}">
-                {{ csrf_field() }}
-                {{ method_field('delete') }}
-              </form>
+              <a href="/done/{{ $task->id }}" class="done mr-5 btn btn-secondary" data-id="{{ $task->id }}">done</a>
               <a href="#"><i class="del fas fa-times" data-id="{{ $task->id }}"></i></a>
               <form method="post" action="{{ url('/tasks', $task->id) }}" id="task_del_{{ $task->id }}">
                 {{ csrf_field() }}

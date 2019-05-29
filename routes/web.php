@@ -14,7 +14,7 @@
 Route::get('/', 'TaskController@index');
 Route::post('/tasks', 'TaskController@create');
 Route::delete('/tasks/{task}', 'TaskController@destroy');
-// Route::post('/tasks', 'TaskController@check');
+Route::get('/done/{task}', 'TaskController@done');
 
 Auth::routes();
 

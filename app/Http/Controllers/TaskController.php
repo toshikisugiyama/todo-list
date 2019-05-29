@@ -22,4 +22,9 @@ class TaskController extends Controller
       $task->delete();
       return redirect('/');
     }
+    public function done(Task $task) {
+      $task->done_flag = 1;
+      $task->save();
+      return redirect('/');
+    }
 }
