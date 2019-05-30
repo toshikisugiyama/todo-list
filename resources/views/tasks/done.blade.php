@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('switch_done')
-<a href="{{ url('/done') }}" class="mr-5">Done</a>
+<a href="{{ url('/') }}" class="mr-5">Todo</a>
 @endsection
 
 @section('content')
@@ -30,18 +30,8 @@
                 <span class="h1 mb-0">{{ $task->title }}</span>
               </div>
             </div>
-            <div class="d-flex align-items-center">
-              @if($task->deadline)
-              <span class="h6 mb-0 badge mr-5">{{ $task->deadline }}</span>
-              @else
-              <span class="h6 mb-0 badge mr-5">明日</span>
-              @endif
-              <a href="/done/{{ $task->id }}" class="done mr-5 btn btn-secondary" data-id="{{ $task->id }}">done</a>
-              <a href="#"><i class="del fas fa-times" data-id="{{ $task->id }}"></i></a>
-              <form method="post" action="{{ url('/tasks', $task->id) }}" id="task_del_{{ $task->id }}">
-                {{ csrf_field() }}
-                {{ method_field('delete') }}
-              </form>
+            <div class="d-flex align-items-center justify-content-end w-100">
+              <p class="d-inline mb-0 badge"><span class="d-inline text-muted">完了日：</span>2019/5/30</p>
             </div>
           </div>
         </li>

@@ -18,7 +18,7 @@
   <header class="py-3 border-bottom fixed-top bg-light">
     <div class="container">
       <nav class="row justify-content-end">
-        <a href="" class="mr-5">Done</a>
+        @yield('switch_done')
         <form method="post" action="">
           {{ csrf_field() }}
           <div class="form-group mb-0 mx-5">
@@ -28,7 +28,7 @@
           </div>
         </form>
         <!-- Right Side Of Navbar -->
-        <ul class="navbar-nav ml-5">
+        <ul class="navbar-nav ml-5 mr-3">
             <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
