@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
       $tasks = Task::latest()->where('done_flag', 0)->get();
       return view('tasks.index',['tasks'=>$tasks]);

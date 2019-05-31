@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', 'TaskController@index');
-Route::post('/tasks', 'TaskController@create');
-Route::delete('/tasks/{task}', 'TaskController@destroy');
-Route::get('/done/{task}', 'TaskController@done');
-Route::get('/done', 'DoneController@show');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'TaskController@index');
+Route::post('/tasks', 'TaskController@create');
+Route::delete('/tasks/{task}', 'TaskController@destroy');
+Route::get('/done/{task}', 'TaskController@done');
+Route::get('/done', 'DoneController@show')->middleware('auth');
